@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Habits-描述兔子生活上的習性與須注意事項</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/Logo.png" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&family=Jost:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- collapse JS-->
+    <script src="./js/bootstrap.bundle.js"></script>
+
+
+</head>
+
+<style>
+    body {
+        overflow-x: hidden;
+    }
+
+    /* .position-sticky:hover {
+        position: relative;
+        margin-top: 50px; 
+        background-color:yellowgreen ;
+        
+    } */
+    .sticky {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 20%;
+        /* background: yellow; */
+    }
+
+    .p-3:visited {
+        background-color: skyblue !important;
+        color: white !important;
+        border-radius: 10px 10px;
+    }
+
+    .p-3 {
+
+        border-radius: 10px 20px;
+    }
+
+    @media (max-width: 992px) {
+
+        .list-group,
+        .list-group-item {
+            display: inline;
+            height: fit-content;
+            margin-bottom: 2px;
+        }
+
+        .btn-list {
+            height: 90px;
+        }
+
+        .sticky {
+            top: 2%;
+        }
+    }
+
+    @media (max-width: 588px) {
+        .btn-list {
+            height: 180;
+        }
+
+        .list-group-item {
+            display: table-cell;
+        }
+    }
+</style>
+<script>
+    window.onload = function () {
+        cin = document.getElementById("test").innerHTML;
+        document.getElementById("search").onkeyup = function () {
+
+            s = document.getElementById("search").value.toLowerCase();
+            new_cin = cin;
+
+            if (s !== "") {
+                lowercin = new_cin.toLowerCase();                                //→　將內容全部轉換為小寫
+                index = lowercin.indexOf(s);                                     //→　找出s ，ex:hello world
+                while (index != -1) {
+                    firstPart = new_cin.substr(0, index);                         //→ [he]llo world
+                    secondPart = new_cin.substr(index, s.length);                 //→ he[ll]o world
+                    thirdPart = new_cin.substr(index + s.length);                  //→ hell[o world]
+                    new_cin = firstPart + `<mark>` + secondPart + `</mark>` + thirdPart; // → [he]<mark>[ll]</mark>[o world]，並輸出
+
+                    lowercin = new_cin.toLowerCase();                            // → 將上一行程式碼重新存入文章
+                    index = lowercin.indexOf(s, index + s.length + 13);               // → 在加上<mark></mark>長度的文章內容中找出同為s的字
+
+                }
+            }
+
+            document.getElementById("test").innerHTML = new_cin;
+
+            // document.getElementById("test").innerHTML = s;
+
+
+
+        }
+
+        
+    }
+    function ShowAns() {
+        num = document.getElementById('num').value;
+        // document.getElementById('ans').innerHTML = num;
+        // num = parseInt(num);
+    
+        if (num < 0) {
+            ans = '請輸入大於0的數字';
+        }
+        else if (num < 0.1) {
+            ans = '嬰兒~國小生';
+        } else if (num < 0.3) {
+            ans = '國小生~國中生';
+        } else if (num < 0.6) {
+            ans = '國中生~大學生';
+        } else if (num < 1) {
+            ans = '大學生~成年人';
+        } else if (num < 3) {
+            ans = '成年人~壯年人';
+        } else if (num < 4) {
+            ans = '壯年人~中年人';
+        } else if (num < 6) {
+            ans = '中年人~老人家';
+        } else if (num < 10) {
+            ans = '老人家~長者';
+        }else if (num == 10){
+            ans = '長者';
+        }else {
+            ans = '人瑞';
+        }
+        console.log(ans)
+    
+        document.getElementById('ans').innerHTML = ans;
+    }
+</script>
+<script>
+
+
+
+    
+</script>
+
+<body>
+    <div class="container-xxl bg-white p-0">
+        <!-- Spinner Start -->
+        <div id="spinner"
+            class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+
+        <!-- Navbar & Hero Start -->
+        <div class="container-xxl position-relative p-0">
+            <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+                <a href="#" class="navbar-brand p-0">
+                    <h1 class="m-0">Habits</h1>
+                    <!-- <img src="img/logo.png" alt="Logo"> -->
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="fa fa-bars"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav mx-auto py-0">
+                        <a href="index.html" class="nav-item nav-link active">Rabbit Type</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Habits</a>
+                            <div class="dropdown-menu m-0">
+                                <a href="#live" class="dropdown-item" title="居住環境、飲食習慣、適合溫度、睡眠時間">日常生活</a>
+                                <a href="#stander" class="dropdown-item" title="兔子年齡、體型重量、外表骨骼">健康標準</a>
+                                <a href="#behavior" class="dropdown-item" title="肢體語言、聲音表達、智商行為">個性行為</a>
+                                <a href="#training" class="dropdown-item" title="控制飲食、讓兔子喜歡你、賦予指令、訓練強度、持續堅持">馴服兔子</a>
+                                <a href="#dispute" class="dropdown-item" title="問題及闢謠">錯誤爭議</a>
+                            </div>
+                        </div>
+                        <a href="map.html" class="nav-item nav-link">Map</a>
+                        <a href="works.html" class="nav-item nav-link">Works</a>
+                        <!-- <a href="project.html" class="nav-item nav-link">Project</a>
+                        <a href="contact.html" class="nav-item nav-link">Contact</a> -->
+                    </div>
+                    <img src="./img/logo-Test.jpg" class="btn rounded-pill ms-3 d-none d-lg-block"
+                        style="background-color: #198754;">
+                </div>
+            </nav>
+
+            <div class="container-xxl py-5 bg-success hero-header">
+                <div class="container my-5 py-5 px-lg-5">
+                    <div class="row g-5 py-5">
+                        <div class="col-12 text-center">
+                            <h1 class="text-white animated slideInDown">Habits</h1>
+                            <hr class="bg-white mx-auto mt-0" style="width: 90px;">
+                            <h6 class="text-white animated slideInDown">描述兔子生活上的習性與須注意事項</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Navbar & Hero End -->
+
+
+
+
+        <!-- scrollspy start -->
+
+        <div class="row align-items-center px-lg-5 sticky">
+
+            <div class="col-lg-4 text-lg-start mx-auto btn-list scrollbar-list card" data-bs-spy="scroll">
+                <div class="d-flex " id="wrapper ">
+
+                    <!-- Sidebar-->
+                    <div class="border-end bg-white" id="sidebar-wrapper">
+                        <div class="list-group list-group-flush gap-2 ">
+                            <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#live"
+                                title="居住環境、飲食習慣、適合溫度、睡眠時間">日常生活</a>
+                            <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#stander"
+                                title="兔子年齡、體型重量、外表骨骼">健康標準</a>
+                            <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#behavior"
+                                title="肢體語言、聲音表達、智商行為">個性行為</a>
+                            <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#training"
+                                title="控制飲食、讓兔子喜歡你、賦予指令、訓練強度、持續堅持">馴服兔子</a>
+                            <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#dispute"
+                                title="問題及闢謠">錯誤爭議</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-8 text-lg-start scrollbar-list"
+                style="border-radius: 10px; border: 2px solid skyblue; height: 480px; overflow: scroll; overflow-x:hidden;">
+                <!-- Page content wrapper-->
+                <div id="page-content-wrapper"></div>
+                <input type="text" placeholder="Search" id="search" title="請輸入想搜尋的內容（中文）" id="search"
+                oninput="value=this.value.replace(/[^\u4e00-\u9fa5]/g,'')"
+                autocomplete="off"
+                style="position: absolute;width: 10%;right: 5%;top: 2%;">
+                <div class="container-fluid" id="test">
+                    <!-- <input type="text" placeholder="Search..." title="請輸入想搜尋的內容" id="search"
+                        style="position: absolute;width: 10%;right: 5%;"> -->
+                    <div id="live" style="width:100%;">
+                        <br>
+                        <h3 class="mt-3" style="color:steelblue">日常生活</h3>
+                        <div>
+                            <h5 class="ms-3" style="color:gray">居住環境</h5>
+                            <div class="ms-3">
+                                <p class="ms-3">1.要給予足夠的空間，擺放生活器具後仍有足夠空間讓兔子躺平。</p>
+                                <p class="ms-3">
+                                    2.兔子的腳掌跟貓狗不同，沒有肉球肉墊，過硬的地面或是無法分散踩踏壓力的鐵條會使兔子的腳底毛脫落減少，而後續發生胼胝/膿包等病徵，如未妥善治療則可能需要移除組織或截肢等重大手術。
+                                    給予適當的足部保護是合格兔籠的基本具備。</p>
+                                <p class="ms-3">
+                                    3.兔籠要避免百熱於陽光直射的地方及冷氣出風口位置，避免陽光直射產生白內障或長時間冷風直吹，適度的讓兔子接受間接自然光源，可促進鈣質吸收，維持健康的狀態。</p>
+                            </div>
+                            <h5 class="ms-3" style="color:gray">飲食習慣</h5>
+                            <div class="ms-3">
+                                <p class="ms-3">1.對兔子來說最重要的牧草是主食、飼料為輔，蔬菜水果並非兔子的主食，只能當做點心和飲食輔助品。</p>
+                                <p class="ms-3">2.牧草對兔子來說除了幫助腸胃道蠕動之外，還能幫助兔子磨牙。</p>
+                                <p class="ms-3">
+                                    3.最重要的是，舉凡生命都需要喝水，所以兔兔也一定要喝水，但因為兔兔的腸胃道相對於其他貓狗較脆弱，所以若飲水不乾淨，反而容易引發拉肚子等腸胃道疾病而生病，所以在飲水上面必須要提供的為乾淨、煮過的飲水。
+                                </p>
+                            </div>
+
+                            <h5 class="ms-3" style="color:gray">適合的溫度</h5>
+                            <div class="ms-3">
+                                <p class="ms-3">1.兔子對寒冷的耐受度好、但非常怕熱，所以飼養溫度對兔子非常重要。一般而言20~22°C是對牠們來說最舒適的溫度。</p>
+                                <p class="ms-3">2.一旦超過28°C的溼熱天氣就有可能導致兔子中暑，所以台灣的夏天對牠們而言是很危險的，最好是全天候的冷氣伺候。</p>
+                                <p class="ms-3">3.當氣溫跌至12度以下，主人則可準備一條大毛巾為兔子擋風，主人可以將毛巾覆蓋在兔籠上方和左右兩邊位置，有擋風作用。</p>
+                            </div>
+                            <h5 class="ms-3" style="color:gray">睡眠時間</h5>
+                            <div class="ms-3">
+                                <p class="ms-3">1.兔子的睡眠時間大約在8.7小時到11.4小時，主要在中午12點到下午3點及凌晨12點到凌晨3點。</p>
+                                <p class="ms-3">2.因為寵物兔的祖先是野兔，野兔是一種弱小的動物，白天一般躲藏在洞穴中休息，為了防禦捕食者，黃昏和夜晚才出動到地面覓食活動。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div id="stander">
+                        <br>
+                        <h3 class="mt-3" style="color:steelblue">健康標準 |
+
+                            <span class="input-group" style="font-size: initial;display: inline;">
+                                請輸入兔子的年紀：<input id="num" class="btn" style="width: 6rem;border: #0dcaf0 1px solid;"
+                                    type="number" title="整數為年份，小數為月份">
+                                <input id="ansbtn" type="button" onclick="ShowAns()" class="btn btn-outline-info" style="display: inline;" value="check"></input>
+                                對應人類身分：<span id="ans"></span>
+                            </span>
+                        </h3>
+
+                        <div>
+                            <a href="./img/HumanVsRabbitAge.jpg" target="_blank">
+                                <h5 class="ms-3" style="color:gray">兔子年齡vs人類歲數</h5>
+                            </a>
+                            <div class="ms-3">
+                                <table class="table">
+                                    <thead class="table-success">
+                                        <tr>
+                                            <th style="width:12%;">人類</th>
+                                            <th style="width:12%;">兔子</th>
+                                            <th>描述</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td title="約6歲">國小生</td>
+                                            <td>1個月</td>
+                                            <td>渡過哺乳期的小兔，開始學習吃東西以及摸索社會。</td>
+                                        </tr>
+                                        <tr>
+                                            <td title="約13歲">國中生</td>
+                                            <td>3個月</td>
+                                            <td>青春期的兔子會出現各種性徵與生理現象。兔子舞、來回衝刺、搖尾巴等行為表現。</td>
+                                        </tr>
+                                        <tr>
+                                            <td title="約18歲">大學生</td>
+                                            <td>6個月</td>
+                                            <td>這時的兔子俱備完整的生育能力，同性之間的相斥與異性間的相吸會更明顯，不合的兔子開始打架與占地盤，兔子舞、來回衝刺等行為越來越明顯。
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td title="約21歲">成年人</td>
+                                            <td>1、2歲</td>
+                                            <td>性成熟所誘發的行為現象(如噴尿、假懷孕)也會越來越明顯。適合結紮。</td>
+                                        </tr>
+                                        <tr>
+                                            <td title="約35歲">壯年人</td>
+                                            <td>3歲</td>
+                                            <td>生理開始進入停止成長(或趨緩成長)的狀態，一些需要時間誘發的潛在疾病(如生殖系統病變、齒根壓迫、骨刺等)也會自此開始增加發生率。
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td title="約42~49歲">中年人</td>
+                                            <td>4、5歲</td>
+                                            <td>兔子生理開始進入零成長的狀態，性情逐漸穩定，建議飼主可以趁兔兔還有體力與恢復力時做一次較精密的全身檢查，及早發現可能的潛在問題。
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td title="約56~77歲">老人家</td>
+                                            <td>6~9歲</td>
+                                            <td>六歲以上的兔子已經可算是老兔了，偶爾行動上開始出現鈍鈍的行為，或是走走停停現象，健康檢查的頻率應提高。若保養得宜，依然可健康的跑跳與玩耍。
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td title="約56~77歲">長者</td>
+                                            <td>10歲</td>
+                                            <td>對寵物兔來說十歲算是個臨界點，已經開始逼近寵物兔生理構造上的年齡界線。這時的兔子就跟很多八十多歲的老人家一樣出現兩種極端，很健康或是很不健康。
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td title="約56~77歲">人瑞</td>
+                                            <td>10歲以上</td>
+                                            <td>活超過十歲的兔子不多見，但現代飼養觀念與醫療普級後，兔子擺脫了過去經濟類動物時代的枷鎖，更常命且更健康。大多數的兔子若無病痛的渡過8-9歲這個階段，則活過十歲到十五歲的機率都很大。
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <h5 class="ms-3" style="color:gray">體型重量</h5>
+                            <div class="ms-3">
+                                <p class="ms-3">成年兔平均體重約為6磅，兔子的大小會因年齡和品種的不同而有很大差異，一般會把兔子分為以下三類</p>
+                                <p class="ms-3">小型兔：不超過5磅（約2.2公斤），是兔子品種最少的類別，在<a href="https://arba.net/" target="_blank"
+                                        title="ARBA">美國兔子繁殖者協會</a>認可近50個品種中，只有11個品種的體重低於5磅。</p>
+                                <p class="ms-3">中型兔：重量介於5~8磅（約2.2~3.6磅），約有15個品種屬於中等類別。這個重量比大多數人對寵物兔的預期大到2~3倍。</p>
+                                <p class="ms-3">
+                                    大型兔：重量介於8磅以上（約3.6磅），剩餘品種皆屬於大型兔，但這些品種大多數很稀有，且不被視為家養寵物。基本上，較大品種的兔子已被開發成為肉兔而非寵物兔，即使越來越多被視為寵物，但目前仍不常見
+                                </p>
+                            </div>
+                            <h5 class="ms-3" style="color:gray">外貌骨骼</h5>
+                            <div class="ms-3">
+                                <p class="ms-3">性別：兔子的脖子附近有一大圈皮膚皺褶，其名為肉垂，亦被稱為「大圍巾」，此構造常出現在成年且未結紮的母兔身上。若脖子上沒有圍巾則為公兔。
+                                </p>
+                                <p class="ms-3">耳朵：實際上是最脆弱、敏感的部位之一。兔子除了依靠耳朵來聽聲音之外，還通過耳朵散熱和夜間聽音辨別方向。
+                                    硬生生的拉扯兔子的耳朵會造成傷害，這會嚴重影響到兔子的聽覺和日常生活。</p>
+                                <p class="ms-3">牙齒：一共有28顆牙齒，其中上下門牙有兩對，需以啃食大量牧草進行磨牙。若放任持續生長，無論是向上或向下凸長都會是致命的。</p>
+                                <p class="ms-3">
+                                    消化系統：兔子的盲腸回螺旋形，容量佔整個消化道的一半。特殊的消化系統，讓兔子糞便分為：硬硬圓圓的普通便；跟深色柔軟的「盲腸便」。盲腸便含有蛋白質、維生素、跟益生菌，吃下肚能再一次被吸收利用。雙重消化，能幫兔寶寶獲取最多的營養。
+                                </p>
+                                <p class="ms-3">
+                                    腳：的足底沒有肉墊，皮膚很薄，在正常情況下，他們是用趾頭著地行動和跳躍，休息時他們會把體重分散在後腳的前爪到趾骨平面，在這個平面只有厚厚的毛覆蓋保護．可能會造成疼痛，傷口感染、出血引發一連串問題。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div id="behavior">
+                        <br>
+                        <h3 class="mt-3" style="color:steelblue">個性行為</h3>
+                        <div>
+                            <h5 class="ms-3" style="color:gray">肢體語言</h5>
+                            <div class="ms-3">
+                                <p class="ms-3">繞圈圈：一種求愛的行為，有時候更會同時發出咕嚕的叫聲。通常就代表兔子可以進行絕育了。同時可以代表想人注意或者要求食物。</p>
+                                <p class="ms-3">跳躍：兔子跳躍時，就好像跳舞一樣。特別侏儒/迷你兔，他們比較愛用跳躍去表達自己高興和非常享受的感覺。</p>
+                                <p class="ms-3">撲過來：兔子會不喜歡人家去碰他的東西。當主人清理籠子時，換食物盤時，兔子就可能會撲過來。這樣是代表他不喜歡，撲過來是一種襲擊的表現。 </p>
+                                <p class="ms-3">跺腳：當兔子感到害怕時，他們會用後腿跺腳。在野外，當敵人接近，兔子會用後腿跺腳去通知同伴有危險。 </p>
+                                <p class="ms-3">側睡：兔子側睡，把腿伸展是代表他們感到很安全。如果主人不去打擾他，兔子就可能很快就睡著了。</p>
+                                <p class="ms-3">
+                                    壓低身體：當兔子盡量把身體壓低，是代表他很緊張，覺得有危險接近。在野外，當兔子覺得有危險接近，他們會嘗試壓低身子，避免被看到。而寵物兔也會有這行為。 </p>
+                                <p class="ms-3">蹲下來：蹲下來跟壓低身子的表現是不同意思。蹲下來時，兔子的肌肉是放鬆的，是一種感到輕鬆的表現。 </p>
+                                <p class="ms-3">正躺：代表兔子心情很不錯，感覺很舒適。 </p>
+                                <p class="ms-3">推開你的手：代表他覺得自己已經做妥了這件事，告訴主人別來管他的事。 </p>
+                                <p class="ms-3">鼻子跟身體靠近籠邊：代表懇求，希望得到一些東西或對待。例如兔子想吃小食，想主人把他放出來。 </p>
+                                <p class="ms-3">輕咬：在兔子世界中的意思是"好了，我已經足夠了！"。他們是會利用輕咬來告訴主人停止現在的行動。 </p>
+                                <p class="ms-3">舔手：在兔子的身為語言中，舔手是代表多謝。如果你家兔子舔你的手，代表他想跟你說謝謝喔！ </p>
+                                <p class="ms-3">
+                                    抽動尾巴：一種調皮的表現，就如人類伸舌的動作。通常兔子會在一邊跳躍時一邊前後抽動尾巴。例如主人想把兔子被捉回籠子，兔子突然跳起來同時抽動尾巴，代表他想說"你不會捉到我"的意思。
+                                </p>
+                                <p class="ms-3">用下巴去擦東西：因為兔子下巴的位置是有香腺的，所以兔子會用下巴去擦東西，留下自己的氣味，以劃分地盤。這種氣味人類嗅不到，不過兔子就知道。</p>
+                                <p class="ms-3">
+                                    噴尿：未經絕育的成年公兔可能會出現噴尿的行為。噴尿是兔子世界中用來劃分地盤和佔有母兔的做法。母兔可能同樣會有噴尿的行為，可是主要是公兔出現這行為比較多。 </p>
+                                <p class="ms-3">到處拉大便：兔子一般也會在某一處拉一堆大便。如果兔子在不同地方分散地拉大便，其實也是一種劃地盤的行為。 </p>
+                                <p class="ms-3">
+                                    拔毛：當母兔要產子的前一天，他們就會出現拔毛的行為。他們會在胸部和腳側的位置拔毛，利用拔出來的毛來建窩給小兔子保溫。如果兔子是假懷孕，也會出現拔毛的情況。</p>
+                            </div>
+                            <h5 class="ms-3" style="color:gray">聲音表達</h5>
+                            <div class="ms-3">
+                                <p class="ms-3">
+                                    咕咕叫：小白兔如果咕咕叫，通常是對主人的行為或對另一隻兔子感到不滿。咕咕叫代表兔子不高興中。就如兔子不喜歡人家去抱它碰它，它就會發出咕咕叫。如果你再不停止那行為，就可能會被抓破皮膚的。
+                                </p>
+                                <p class="ms-3">憤氣聲：噴氣聲代表兔子覺得某些東西或某些行動令它感到受威脅。如果是你的行動令兔子感到受威脅，當你繼續那行動時，就可能會被咬。</p>
+                                <p class="ms-3">
+                                    尖叫聲：兔子的尖叫和人類是一樣，通常是代表害怕或者痛楚。如果突然聽到兔子尖叫聲，主人應該給予關注，因為可能是兔子受了傷，很痛，還有可能有涉及生命危險，通常在10分鐘後就會死去。
+                                </p>
+                                <p class="ms-3">
+                                    磨牙聲：如果大聲磨牙代表兔子感到疼痛，最好帶兔子看一下獸醫師。如果輕輕磨牙代表兔子很滿足很高興。當兔子輕力發生磨牙聲，如果你伸手摸兔子下巴，可以感到臼齒在摩擦。</p>
+                                <p class="ms-3">咬牙聲：當兔子發出咯咯的咬牙聲，是代表痛楚。這時候兔子一般會彎起身而坐，耳朵向後貼緊身體。這時你可以走過去抱起它，撫摸它的身體，給它帶去安慰。
+                                </p>
+                                <p class="ms-3">
+                                    嗚嗚叫：像貓咪一樣，兔子滿足時也會嗚嗚叫。不過兔子和貓咪不同之處是貓咪會用喉去發聲，但兔子是用牙齒去發聲。其實呢，只要你仔細聽一下，還是可以聽得到的。</p>
+                                <p class="ms-3">嘶嘶叫：兔子通常是對另一隻兔子纔會發出嘶嘶的叫聲。嘶嘶的叫聲是代表一種反擊的警告，主要是告訴另一隻兔子別過來的意思，否則它會進行攻擊。</p>
+                                <p class="ms-3">發情叫聲：發情的叫聲不同於咕咕叫。發情的叫聲是低低沉沉而有規律的叫聲。一般公兔在追逐母兔時會發出此叫聲。</p>
+                            </div>
+                            <h5 class="ms-3" style="color:gray">智商行為</h5>
+                            <div class="ms-3">
+                                <p class="ms-3">
+                                    兔子的智商相當於人類三歲，可以記住動作、理解簡單的口令。性格像貓，有時獨立有時怕孤獨，喜歡黏著主人。所以養的兔子每天若只會吃喝，對主人不聞不問，有可能是疏忽了對兔子的訓練，導致兔子的聰明才智被埋沒。
+                                    <br>只要主人細心照料，兔子會在心裡認可飼主的地位。部分聰明的兔子可以記住家庭成員裡不同的要求及洗好，並差別對待。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div id="training">
+                        <br>
+                        <h3 class="mt-3" style="color:steelblue">馴服兔子</h3>
+                        <div>
+                            <h5 class="ms-3" style="color:gray">一、控制飲食</h5>
+                            <div class="ms-3">
+                                <p class="ms-3">掌控兔子愛吃的零食，可以是主糧或木瓜乾，只要比草好吃就可以。</p>
+                            </div>
+                            <h5 class="ms-3" style="color:gray">二、讓兔子喜歡你</h5>
+                            <div class="ms-3">
+                                <p class="ms-3">利用零食吸引兔子靠近你，習慣你的存在。</p>
+                            </div>
+                            <h5 class="ms-3" style="color:gray">三、賦予指令</h5>
+                            <div class="ms-3">
+                                <p class="ms-3">口頭稱讚，用高音稱讚兔子很棒，可以讓牠聽出來你很開心牠這樣做。</p>
+                                <p class="ms-3">趴下指令，自身小腿彎曲，用零食引誘兔子鑽小腿洞，同時喊趴下。</p>
+                                <p class="ms-3">轉圈指令，手拿零食在兔鼻前，吸引兔子繞圈，搭配”轉圈圈”口令。</p>
+                                <p class="ms-3">跳躍指令，手拿零食在大腿的另一側，吸引兔子跳過另一邊吃到零食，跳躍的過程中，同時喊跳過來並搭配手勢動作。</p>
+                            </div>
+                            <h5 class="ms-3" style="color:gray">四、訓練強度</h5>
+                            <div class="ms-3">
+                                <p class="ms-3">一天可以訓練很多次，以每以五分鐘為上限。時間短次數多的效果會更好。</p>
+                                <p class="ms-3">訓練時間可以在早上出門前和晚上下班回家後。</p>
+                                <p class="ms-3">訓練兔子也是一種陪伴跟建立感情的機會，可以讓彼此更愛對方。</p>
+                            </div>
+                            <h5 class="ms-3" style="color:gray">五、持續堅持</h5>
+                            <div class="ms-3">
+                                <p class="ms-3">一次只訓練一種指令就好，不要貪心，一直到兔子記起後再訓練另一種即可。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div id="dispute">
+                        <br>
+                        <h3 class="mt-3" style="color:steelblue">誤會爭議</h3>
+                        <div>
+                            <h5 class="ms-3" style="color:gray">人類懷孕有寶寶後還可以養兔子嗎？</h5>
+                            <div class="ms-3">
+                                <p class="ms-3">健康的兔兔對胎兒和寶寶並沒有直接影響，懷孕當然可以養兔子！</p>
+                            </div>
+                            <h5 class="ms-3" style="color:gray">兔子需要洗澡嗎？</h5>
+                            <div class="ms-3">
+                                <p class="ms-3">可以給兔子洗澡但不是必要的，只要飼主把環境整理好，兔子就有能力讓自己保持乾淨了！</p>
+                            </div>
+                            <h5 class="ms-3" style="color:gray">兔子很臭？</h5>
+                            <div class="ms-3">
+                                <p class="ms-3">
+                                    事實上健康的寵物兔便便乾燥幾乎無臭味，愛乾淨的兔子又習慣把自己的身體整理得漂漂亮亮、整整齊齊的，基本上不會有什麼令人不快的味道產生；飼養過程中可能會產生的異味通常只有兩種：發情時的費洛蒙和尿液。
+                                </p>
+                            </div>
+                            <h5 class="ms-3" style="color:gray">沒有長不大的兔子</h5>
+                            <div class="ms-3">
+                                <p class="ms-3">正常的寵物兔無論體型大小，成兔後正常的身長(由鼻頭端到尾巴底)至少要足三十公分，若超過一歲齡的兔隻身長仍在三十公分以下應該都屬於基因病態。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div id="entertainment">
+                        <br>
+                        <h1 class="mt-4">適合兔子的娛樂活動</h1>
+                        part6
+                    </div> -->
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- scrollspy end -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- Footer Start -->
+        <div class="container-fluid bg-success footer wow fadeIn" data-wow-delay="0.1s">
+        </div>
+        <!-- Footer End -->
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-lg-square btn-outline-info back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/isotope/isotope.pkgd.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+
+    <!-- Template Javascript -->
+    <!-- <script src="js/scripts.js"></script> -->
+    <script src="js/main.js"></script>
+
+    <!-- <script>
+               
+                    let sidebarToggle = document.body.querySelector('#sidebarToggle');
+                    if (sidebarToggle) {
+                        // Uncomment Below to persist sidebar toggle between refreshes
+                        // if (localStorage.getItem('sb|sidebar-toggle') === 'true') {
+                        //     document.body.classList.toggle('sb-sidenav-toggled');
+                        // }
+                        sidebarToggle.addEventListener('click', event => {
+                            event.preventDefault();
+                            document.body.classList.toggle('sb-sidenav-toggled');
+                            localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb-sidenav-toggled'));
+                            console.log("done")
+                        });
+                    }
+             
+            </script> -->
+</body>
+
+</html>

@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Rabbit Type-介紹兔子種類</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/Logo.png" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&family=Jost:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- others -->
+
+</head>
+
+<style>
+   .d-block{
+        height: 400px;
+        border-radius: 5px;
+   }
+   .lh-base{
+        height: 72px;
+   }
+
+</style>
+
+
+<script>
+    window.onload = function () {
+        document.getElementById("bn").onclick = function () {
+            fetch("./rabbit_all.js")
+                .then((Response) => {                        /*→ .then聲明式語法*/
+                    return Response.json()                   /*→ 直接解析HW.html內容*/
+                })
+                .then((object) => {
+                    let draw = document.getElementById("draw").value                   /*→ 在id為text的位置中放輸入值*/
+                    let allType = object['allType']
+                    let data = allType.find(function (el) {
+                        return el.TypeName == draw
+                    })
+                    if (data) {
+                        document.getElementById("showType").innerHTML = `<div class=" wow fadeIn">${data.TypeName}<br>${data.photo}</div>`
+                        console.log(data)
+                    } else {
+                        // document.getElementById("showType").innerHTML = `<div style="color:red;line-height:408px ">請輸入正確內容</div>`
+                        document.getElementById("showType").innerHTML = `<div class=" wow fadeIn"><img src="./img/ErrorType.jpg" style="border-radius:10px "><br><h5 style="color:red">請輸入正確內容</h5></div>`
+                        console.log(data)
+                    }
+                    // document.getElementById("showType").innerHTML = object[draw]           /*→ test的內容顯示text所輸入對應的值*/
+                })
+        }
+    }
+
+</script>
+
+<body>
+    <div class="container-xxl bg-white p-0">
+        <!-- Spinner Start -->
+        <div id="spinner"
+            class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-grow text-success" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+
+        <!-- Navbar & Hero Start -->
+        <div class="container-xxl position-relative p-0">
+            <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+                <a href="" class="navbar-brand p-0">
+                    <h1 class="m-0">兔巢<span style="color: aliceblue;font-size: small;">a nest of Rabbit</span></h1>
+                    <!-- <img src="img/logo.png" alt="Logo"> -->
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="fa fa-bars"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav mx-auto py-0">
+                        <a href="index.html" class="nav-item nav-link active">Rabbit Type</a>
+                        <div class="nav-item dropdown">
+                            <a href="habit.html" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Habits</a>
+                            <div class="dropdown-menu m-0">
+                                <a href="habit.html#live" class="dropdown-item" title="居住環境、飲食習慣、適合溫度、睡眠時間">日常生活</a>
+                                <a href="habit.html#stander" class="dropdown-item" title="兔子年齡、體型重量、外表骨骼">健康標準</a>
+                                <a href="habit.html#behavior" class="dropdown-item" title="肢體語言、聲音表達、智商行為">個性行為</a>
+                                <a href="habit.html#training" class="dropdown-item" title="控制飲食、讓兔子喜歡你、賦予指令、訓練強度、持續堅持">馴服兔子</a>
+                                <a href="habit.html#dispute" class="dropdown-item" title="問題及闢謠">錯誤爭議</a>
+                            </div>
+                        </div>
+                        <a href="map.html" class="nav-item nav-link">Map</a>
+                        <a href="works.html" class="nav-item nav-link">Works</a>
+                        <!-- <a href="project.html" class="nav-item nav-link">Project</a>
+                        <a href="contact.html" class="nav-item nav-link">Contact</a> -->
+                    </div>
+                    <img src="./img/logo-Test.jpg" class="btn rounded-pill ms-3 d-none d-lg-block"
+                        style="background-color: #198754;">
+                </div>
+            </nav>
+
+            <div class="container-xxl bg-success hero-header">
+                <div class="container px-lg-5">
+                    <div class="row align-items-end">
+                        <div class="col-lg-6 text-center text-lg-start ps-5">
+                            <h3 class="text-white mb-4 animated slideInDown">一個人可以有很多親朋好友<br>但你的寵物只有你一個人</h3>
+                            <p class="text-white pb-3 animated slideInDown"><i class="bi bi-flower2"></i> 兔子是很敏感的動物，飼養的環境請以安靜為主。</p>
+                            <p class="text-white pb-3 animated slideInDown"><i class="bi bi-flower2"></i> 適當的運動及陪伴可避免肥胖導致肢體壓力及體脂肪產生，同時療癒身心。</p>
+                            <p class="text-white pb-3 animated slideInDown"><i class="bi bi-flower2"></i> 兔子不像貓狗腳底有肉球，建議地板鋪上可緩衝的布料（如：瑜珈墊）。</p>
+                            <p class="text-white pb-3 animated slideInDown"><i class="bi bi-flower2"></i> 不論是領養或購買，在做決定前要了解這是一輩子的責任，寵物也是生命。</p>
+                            <p class="text-white pb-3 animated slideInDown"><i class="bi bi-flower2"></i> 最後的最後，請以領養代替購買。</p>
+                            <!-- <a href="" class="btn btn-secondary py-sm-3 px-sm-5 rounded-pill me-3 animated slideInLeft">Read More</a>
+                            <a href="" class="btn btn-light py-sm-3 px-sm-5 rounded-pill animated slideInRight">Contact Us</a> -->
+                        </div>
+                        <div class="col-lg-6 text-center text-lg-start ps-5 ">
+                            <img class="img-fluid animated zoomIn" src="img/homepage_rabbit.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Navbar & Hero End -->
+
+
+        <!-- Feature Start -->
+        <div class="container-xxl py-5">
+            <div class="container py-5 px-lg-5">
+                <div class="row g-4">
+                    <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="feature-item bg-light rounded text-center p-4">
+                            <img class="fa fa-3x mb-4" src="./img/del_carrot.png" alt="傷心紅蘿蔔">
+                            <h5 class="mb-3">兔子的主食不是胡蘿蔔</h5>
+                            <p class="m-0">兔子的主食是<mark>牧草</mark>。</p>
+                            <p class="m-0">可以少量餵食胡蘿蔔，因含有大量維生素A</p>
+                            <p class="m-0">過量餵食會引起中毒甚至死亡。</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="feature-item bg-light rounded text-center p-4">
+                            <img class="fa fa-3x mb-4" src="./img/eye_rabbit.png" alt="兔子眼睛">
+                            <i class="fa fa-3x text-success mb-4"></i>
+                            <h5 class="mb-3">兔子的眼睛是無色透明的</h5>
+                            <p class="m-0">白兔的眼睛看起來是紅色的</p>
+                            <p class="m-0">是因為毛細血管<mark>反射外界光線</mark></p>
+                            <p class="m-0">透明的眼睛就會眼線出紅色。</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="feature-item bg-light rounded text-center p-4">
+                            <img class="fa fa-3x mb-4" src="./img/wash_rabbit.jpg" alt="兔子眼睛">
+                            <h5 class="mb-3">兔子臭是刻板印象</h5>
+                            <p class="m-0">早期的兔子以補貼家用作為目的飼養</p>
+                            <p class="m-0">飼養環境不好，再加上排泄物是以堆肥使用</p>
+                            <p class="m-0">堆久了<mark>發酵</mark>便會產生難聞的味道。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Feature End -->
+
+
+
+
+        <!-- Projects Start -->
+        <div class="container-xxl py-5">
+            <div class="container py-5 px-lg-5">
+                <div class="wow fadeInUp mb-5 " data-wow-delay="0.1s">
+                    <h1 class="text-center section-title text-secondary justify-content-center">
+                        <span></span>兔子的不同品種<span></span>
+                    </h1>
+                    <a href="https://bunnylady.com/how-big-do-rabbits-get/" target="_blank">
+                        <p class="text-center" title="The Bunny Lady LLC">分類參考：The Bunny Lady LLC</p>
+                    </a>
+                </div>
+                <div class="row mt-n2 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="col-12 text-center">
+                        <ul class="list-inline mb-5" id="portfolio-flters">
+                            <li class="mx-2 active" data-filter="*" title="一個品種可能同時有大型、中型或小型兔">全部(18)</li>
+                            <li class="mx-2" data-filter=".huge" title="大型兔：成年體重大於8磅（約3.6公斤）">大型兔</li>
+                            <li class="mx-2" data-filter=".middle" title="中型兔：成年體重介於5~8磅（約2.2~3.6公斤）">中型兔</li>
+                            <li class="mx-2" data-filter=".mini" title="迷你兔：成年體重小於5磅（約2.2公斤）">小型兔</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row g-4 portfolio-container ">
+                    <div class="col-lg-4 col-md-6 portfolio-item mini wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="rounded overflow-hidden">
+                            <div class="position-relative overflow-hidden">
+                                <img class="img-thumbnail w-100" src="img/RabbitType/1.mid-mini-Dutch.jpg" alt="">
+                                <div class="portfolio-overlay">
+                                    <a class="btn btn-square btn-outline-light mx-1" href="img/allType/Dutch-T.png"
+                                        data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                                    <a class="btn btn-square btn-outline-light mx-1" target="_blank" href="https://www.youtube.com/watch?v=ap81xXoGG4U"><i
+                                            class="bi bi-youtube"></i></a>
+                                </div>
+                            </div>
+                            <div class="bg-light p-3">
+                                <h5 class="text-success fw-medium mb-2" title="別稱：荷蘭兔、霍蘭兔、圍巾兔">道奇兔</h5>
+                                <p class="lh-base mb-0 ">源自於荷蘭，台灣最常見的品種。臉部有V字型的白色區塊，體型小，耳朵短，個性活潑、容易親近。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 portfolio-item huge mini wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="rounded overflow-hidden">
+                            <div class="position-relative overflow-hidden">
+                                <img class="img-thumbnail w-100" src="img/RabbitType/2.huge-x-mini-Blanc_de_Hotot.jpg" alt="">
+                                <div class="portfolio-overlay" >
+                                    <a class="btn btn-square btn-outline-light mx-1" href="img/allType/Blanc_de_Hotot-T.png"
+                                        data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                                    <a class="btn btn-square btn-outline-light mx-1" target="_blank" href="https://www.youtube.com/shorts/T-NhTfvswk8"><i
+                                            class="bi bi-youtube"></i></a>
+                                </div>
+                            </div>
+                            <div class="bg-light p-3" >
+                                <h5 class="text-success fw-medium mb-2" title="別稱：熊貓兔、荷達特兔、黑輪兔">海棠兔</h5>
+                                <p class="lh-base mb-0">源自於法國，有小型、大型品種。身體純白，只有眼睛周圍的毛是黑色。警覺心強、乖巧可愛。</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 portfolio-item mini wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="rounded overflow-hidden">
+                            <div class="position-relative overflow-hidden">
+                                <img class="img-thumbnail w-100" src="img/RabbitType/3.mini-Lionhead.jpeg" alt="">
+                                <div class="portfolio-overlay">
+                                    <!-- <a class="btn btn-square btn-outline-light mx-1" href="img/all"
+                                        data-lightbox="portfolio"><i class="fa fa-eye"></i></a> -->
+                                    <a class="btn btn-square btn-outline-light mx-1" target="_blank" href="https://www.youtube.com/watch?v=m2xOqbx6ZOw"><i
+                                            class="bi bi-youtube"></i></a>
+                                </div>
+                            </div>
+                            <div class="bg-light p-3">
+                                <h5 class="text-success fw-medium mb-2" title="別稱：獅子頭兔">獅子兔</h5>
+                                <p class="lh-base mb-0">源自於比利時。頭部毛髮蓬鬆濃密，像一隻小獅子。不怕生、活動力強。</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 portfolio-item mini wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="rounded overflow-hidden">
+                            <div class="position-relative overflow-hidden">
+                                <img class="img-thumbnail w-100" src="img/RabbitType/4.mini-holland_lop.jpg" alt="">
+                                <div class="portfolio-overlay">
+                                    <a class="btn btn-square btn-outline-light mx-1" href="img/allType/Lop-T.png"
+                                        data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                                    <a class="btn btn-square btn-outline-light mx-1" target="_blank" href="https://www.youtube.com/watch?v=ptGqNxHkGrQ"><i
+                                            class="bi bi-youtube"></i></a>
+                                </div>
+                            </div>
+                            <div class="bg-light p-3">
+                                <h5 class="text-success fw-medium mb-2" title="別稱：荷蘭垂耳兔、小垂垂">荷蘭垂耳兔</h5>
+                                <p class="lh-base mb-0">源自於荷蘭，是最小的垂耳兔品種。耳朵下垂，短毛，多種毛色。個性膽小、喜好安靜。</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 portfolio-item middle wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="rounded overflow-hidden">
+                            <div class="position-relative overflow-hidden">
+                                <img class="img-thumbnail w-100" src="img/RabbitType/5.mini-spot.jpg" alt="">
+                                <div class="portfolio-overlay">
+                                    <a class="btn btn-square btn-outline-light mx-1" href="img/allType/Spot-T.png"
+                                        data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                                    <a class="btn btn-square btn-outline-light mx-1" target="_blank" href="https://www.youtube.com/watch?v=fYI3cBqIzag"><i
+                                            class="bi bi-youtube"></i></a>
+                                </div>
+                            </div>
+                            <div class="bg-light p-3">
+                                <h5 class="text-success fw-medium mb-2" title="別稱：大麥町兔、混種家兔、花兔、老爺兔">斑點兔</h5>
+                                <p class="lh-base mb-0">源自於英國。身上斑點像101忠狗的大麥町犬，所以也被稱為大麥町兔。性格膽大、愛玩愛跳。</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 portfolio-item huge middle wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="rounded overflow-hidden">
+                            <div class="position-relative overflow-hidden">
+                                <img class="img-thumbnail w-100" src="img/RabbitType/6.huge-Creme_Dargent.jpg" alt="">
+                                <div class="portfolio-overlay">
+                                    <a class="btn btn-square btn-outline-light mx-1" href="img/allType/Creme-T.png"
+                                        data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                                    <a class="btn btn-square btn-outline-light mx-1" target="_blank" href="https://www.youtube.com/watch?v=pwP4WwVT9CI"><i
+                                            class="bi bi-youtube"></i></a>
+                                </div>
+                            </div>
+                            <div class="bg-light p-3">
+                                <h5 class="text-success fw-medium mb-2" title="別稱：忌廉兔、彼得兔、橘兔、金兔">奶油兔</h5>
+                                <p class="lh-base mb-0">源自於法國。像奶油般的毛色，肚子的毛是白色的。有個性、較敏感。</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 portfolio-item middle huge wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="rounded overflow-hidden">
+                            <div class="position-relative overflow-hidden">
+                                <img class="img-thumbnail w-100" src="img/RabbitType/7.huge-mid-mini-Angora.jpg" alt="">
+                                <div class="portfolio-overlay">
+                                    <!-- <a class="btn btn-square btn-outline-light mx-1" href="img/a"
+                                        data-lightbox="portfolio"><i class="fa fa-eye"></i></a> -->
+                                    <a class="btn btn-square btn-outline-light mx-1" target="_blank" href="https://www.youtube.com/shorts/Pcp20uyPTqM"><i
+                                            class="bi bi-youtube"></i></a>
+                                </div>
+                            </div>
+                            <div class="bg-light p-3">
+                                <h5 class="text-success fw-medium mb-2" title="別稱：長毛兔、波斯貓兔、艾達兔">安哥拉兔</h5>
+                                <p class="lh-base mb-0">源自於土耳其的安哥拉省，是一種長毛兔。因毛細長，外型似像安哥拉山羊及安哥拉貓。性格文靜、溫順。</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 portfolio-item middle wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="rounded overflow-hidden">
+                            <div class="position-relative overflow-hidden">
+                                <img class="img-thumbnail w-100" src="img/RabbitType/8.mid-Japanese_Hare.jpg" alt="">
+                                <div class="portfolio-overlay">
+                                    <!-- <a class="btn btn-square btn-outline-light mx-1" href="img/portfolio-2.jpg"
+                                        data-lightbox="portfolio"><i class="fa fa-eye"></i></a> -->
+                                    <a class="btn btn-square btn-outline-light mx-1" target="_blank" href="https://www.youtube.com/watch?v=2FtgFHWJ724&t=127s"><i
+                                            class="bi bi-youtube"></i></a>
+                                </div>
+                            </div>
+                            <div class="bg-light p-3">
+                                <h5 class="text-success fw-medium mb-2">日本野兔</h5>
+                                <p class="lh-base mb-0">源自於日本大久野島，是當地特有的一種野兔。外貌及個性都有所不同。</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 portfolio-item huge wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="rounded overflow-hidden">
+                            <div class="position-relative overflow-hidden">
+                                <img class="img-thumbnail w-100" src="img/RabbitType/9.huge-Flemish_Giants.jpg" alt="">
+                                <div class="portfolio-overlay">
+                                    <!-- <a class="btn btn-square btn-outline-light mx-1" href="img/portfolio-3.jpg"
+                                        data-lightbox="portfolio"><i class="fa fa-eye"></i></a> -->
+                                    <a class="btn btn-square btn-outline-light mx-1" target="_blank" href="https://www.youtube.com/watch?v=mPA-SBRdCeQ"><i
+                                            class="bi bi-youtube"></i></a>
+                                </div>
+                            </div>
+                            <div class="bg-light p-3">
+                                <h5 class="text-success fw-medium mb-2" title="別稱：花明兔、佛萊明兔">佛萊明巨兔</h5>
+                                <p class="lh-base mb-0">源自於比利時，是家兔的最大品種。體型巨大，體重介於4~20公斤。個性慵懶、害羞安靜。</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 portfolio-item huge middle wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="rounded overflow-hidden">
+                            <div class="position-relative overflow-hidden">
+                                <img class="img-thumbnail w-100" src="img/RabbitType/10.huge-mid-chinchilla.jpg" alt="">
+                                <div class="portfolio-overlay">
+                                    <a class="btn btn-square btn-outline-light mx-1" href="img/allType/chinchilla-T.png"
+                                        data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                                    <a class="btn btn-square btn-outline-light mx-1" target="_blank" href="https://www.youtube.com/watch?v=XX2nUquHkJI"><i
+                                            class="bi bi-youtube"></i></a>
+                                </div>
+                            </div>
+                            <div class="bg-light p-3">
+                                <h5 class="text-success fw-medium mb-2" title="別稱：渦卷兔">金吉拉兔</h5>
+                                <p class="lh-base mb-0">源自於美國。因皮毛似南美小動物Chinchillalanigera而得名，風吹到毛時呈現渦狀輪捲，又稱渦卷兔。懂得認人、自尊心強。</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 portfolio-item huge wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="rounded overflow-hidden">
+                            <div class="position-relative overflow-hidden">
+                                <img class="img-thumbnail w-100" src="img/RabbitType/11.huge-Continental_Giant.jpg" alt="">
+                                <div class="portfolio-overlay">
+                                    <!-- <a class="btn btn-square btn-outline-light mx-1" href="img/portfolio-5.jpg"
+                                        data-lightbox="portfolio"><i class="fa fa-eye"></i></a> -->
+                                    <a class="btn btn-square btn-outline-light mx-1" target="_blank" href="https://www.youtube.com/watch?v=YbDqzvh5oAs"><i
+                                            class="bi bi-youtube"></i></a>
+                                </div>
+                            </div>
+                            <div class="bg-light p-3">
+                                <h5 class="text-success fw-medium mb-2" title="別稱：德國灰色巨型兔">大陸巨兔</h5>
+                                <p class="lh-base mb-0">源自於德國，是佛萊明巨兔及歐洲野兔的後代。骨骼較脆弱。個性溫順愛撒嬌</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 portfolio-item mini wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="rounded overflow-hidden">
+                            <div class="position-relative overflow-hidden">
+                                <img class="img-thumbnail w-100" src="img/RabbitType/12.mini-American_Fuzzy_Lop.jpg" alt="">
+                                <div class="portfolio-overlay">
+                                    <a class="btn btn-square btn-outline-light mx-1" href="img/allType/Lop-T.png"
+                                        data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                                    <a class="btn btn-square btn-outline-light mx-1" target="_blank" href="https://www.youtube.com/watch?v=IWrK7sXK3Vw"><i
+                                            class="bi bi-youtube"></i></a>
+                                </div>
+                            </div>
+                            <div class="bg-light p-3">
+                                <h5 class="text-success fw-medium mb-2" title="別稱：美種費斯垂耳兔">美國垂耳兔</h5>
+                                <p class="lh-base mb-0">源自於美國，是該國第三小的垂耳兔品種。圓臉、短頸，有多種毛色。個性文靜膽小、喜歡清潔。</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 portfolio-item middle mini wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="rounded overflow-hidden">
+                            <div class="position-relative overflow-hidden">
+                                <img class="img-thumbnail w-100" src="img/RabbitType/13.huge-Belgian_Hare.jpg" alt="">
+                                <div class="portfolio-overlay">
+                                    <!-- <a class="btn btn-square btn-outline-light mx-1" href=""
+                                        data-lightbox="portfolio"><i class="fa fa-eye"></i></a> -->
+                                    <a class="btn btn-square btn-outline-light mx-1" target="_blank" href="https://www.youtube.com/watch?v=ZZ4aVSA69IA"><i
+                                            class="bi bi-youtube"></i></a>
+                                </div>
+                            </div>
+                            <div class="bg-light p-3">
+                                <h5 class="text-success fw-medium mb-2" title="別稱：巨灰兔、弗朗德巨兔、比利時野兔、小野兔、假野兔">比利時兔</h5>
+                                <p class="lh-base mb-0">源自於比利時，是一種家兔，但經過品種改良，外型酷似野兔。個性聰明，喜歡挖洞。</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 portfolio-item mini wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="rounded overflow-hidden">
+                            <div class="position-relative overflow-hidden">
+                                <img class="img-thumbnail w-100" src="img/RabbitType/14.mini-Dwarf.jpg" alt="">
+                                <div class="portfolio-overlay">
+                                    <!-- <a class="btn btn-square btn-outline-light mx-1" href="img/allType/"
+                                        data-lightbox="portfolio"><i class="fa fa-eye"></i></a> -->
+                                    <a class="btn btn-square btn-outline-light mx-1" target="_blank" href="https://www.youtube.com/watch?v=wuDjZ38RW3c"><i
+                                            class="bi bi-youtube"></i></a>
+                                </div>
+                            </div>
+                            <div class="bg-light p-3">
+                                <h5 class="text-success fw-medium mb-2">荷蘭侏儒兔</h5>
+                                <p class="lh-base mb-0">源自於荷蘭，是體型最小的家兔。耳朵短小，臉型圓潤，顏色花紋多樣。怕生、動作靈活，乖巧可愛。</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 portfolio-item huge middle mini wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="rounded overflow-hidden">
+                            <div class="position-relative overflow-hidden">
+                                <img class="img-thumbnail w-100" src="img/RabbitType/15.mid-Rex.jpg" alt="">
+                                <div class="portfolio-overlay">
+                                    <a class="btn btn-square btn-outline-light mx-1" href="img/allType/Rex-T.png"
+                                        data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                                    <a class="btn btn-square btn-outline-light mx-1" target="_blank" href="https://www.youtube.com/shorts/l37eelGY0Fk"><i
+                                            class="bi bi-youtube"></i></a>
+                                </div>
+                            </div>
+                            <div class="bg-light p-3">
+                                <h5 class="text-success fw-medium mb-2" title="別稱：絨毛兔、絲絨兔、力斯兔">雷克斯兔</h5>
+                                <p class="lh-base mb-0">來源於法國，由兩隻突變的短毛兔發展而來。毛髮似天鵝絨般濃密，毛色多樣。個性活潑好動。</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 portfolio-item huge middle mini wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="rounded overflow-hidden">
+                            <div class="position-relative overflow-hidden">
+                                <img class="img-thumbnail w-100" src="img/RabbitType/16.huge-mid-mini-English_Lop.jpg" alt="">
+                                <div class="portfolio-overlay">
+                                    <a class="btn btn-square btn-outline-light mx-1" href="img/allType/Lop-T.png"
+                                        data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                                    <a class="btn btn-square btn-outline-light mx-1" target="_blank" href="https://www.youtube.com/watch?v=SWMPrxPnxKw"><i
+                                            class="bi bi-youtube"></i></a>
+                                </div>
+                            </div>
+                            <div class="bg-light p-3">
+                                <h5 class="text-success fw-medium mb-2" title="別稱：英種垂耳兔、英國長耳兔">英國垂耳兔</h5>
+                                <p class="lh-base mb-0">源自於非洲阿爾及爾。耳朵又大又垂，最長紀錄為72.4cm。個性怕潮濕，膽子小，受到驚嚇時與會減退。</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 portfolio-item mini middle wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="rounded overflow-hidden">
+                            <div class="position-relative overflow-hidden">
+                                <img class="img-thumbnail w-100" src="img/RabbitType/17.Siamese.jpg" alt="">
+                                <div class="portfolio-overlay">
+                                    <a class="btn btn-square btn-outline-light mx-1" href="img/allType/Siamese-T.png"
+                                        data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                                    <a class="btn btn-square btn-outline-light mx-1" target="_blank" href="https://www.youtube.com/watch?v=pVxFMkPu2i0"><i
+                                            class="bi bi-youtube"></i></a>
+                                </div>
+                            </div>
+                            <div class="bg-light p-3">
+                                <h5 class="text-success fw-medium mb-2">暹羅兔</h5>
+                                <p class="lh-base mb-0">源自於泰國，在200多年前僅由泰國的王宮和大寺院飼養。口鼻、耳朵及四肢末端會隨天氣變色（越冷越黑）。個性溫柔、感情豐富。</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 portfolio-item middle wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="rounded overflow-hidden">
+                            <div class="position-relative overflow-hidden">
+                                <img class="img-thumbnail w-100" src="img/RabbitType/18.Harlequin.jpg" alt="">
+                                <div class="portfolio-overlay">
+                                    <a class="btn btn-square btn-outline-light mx-1" href="img/allType/Harlequin-T.png"
+                                        data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                                    <a class="btn btn-square btn-outline-light mx-1" target="_blank" href="https://www.youtube.com/watch?v=T7F1AjxdSDU"><i
+                                            class="bi bi-youtube"></i></a>
+                                </div>
+                            </div>
+                            <div class="bg-light p-3">
+                                <h5 class="text-success fw-medium mb-2" title="別稱：兔八哥">小丑兔</h5>
+                                <p class="lh-base mb-0">源自於法國，壽命可長達13~15年。毛色斑駁，樣式多種。安靜、身上較無異味。</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Projects End -->
+
+
+        <!-- Team Start -->
+        <div class="container-xxl py-5">
+            <div class="container py-5 px-lg-5">
+                <div class="wow fadeInUp" data-wow-delay="0.1s">
+                    <h1 class="section-title text-secondary justify-content-center">試試看兔子品種查找工具<i
+                            class="bi bi-search"></i>
+                    </h1>
+                    <a href="#all_type">
+                        <p class="text-center ">或向下查看兔子品種整理表</p>
+                    </a>
+                </div>
+                <div class="row g-4">
+                    <div class=" wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="team-item bg-light rounded">
+                            <div class=" text-center border-bottom p-4 wow fadeInUp" data-wow-delay="0.3s">
+                                <div class="rounded-circle " style="height: 408px;" data-wow-delay="0.3s" id="showType"
+                                    alt="請在下方空格輸入:道奇兔/海棠兔/獅子兔/荷蘭侏儒兔/斑點兔">
+                                    請在下方空格輸入:道奇兔/海棠兔/獅子兔/荷蘭侏儒兔/斑點兔...
+
+
+                                    <div id="carouselExampleFade" class="carousel slide carousel-fade"
+                                        data-bs-ride="carousel" data-wow-delay="0.3s">
+                                        <div class="carousel-inner" style="height: 400px;"  data-bs-interval="3000">
+                                            <div class="carousel-item active" title="道奇兔">
+                                                <img src="./img/allType/Dutch.jpg" class="d-block"
+                                                    style="margin:auto;display:block;" alt="...">
+                                            </div>
+                                            <div class="carousel-item" title="斑點兔">
+                                                <img src="./img/allType/spot.jpg" class="d-block"
+                                                    style="margin:auto;display:block;" alt="...">
+                                            </div>
+                                            <div class="carousel-item" title="海棠兔">
+                                                <img src="./img/allType/Blanc_de_Hotot.jpg" class="d-block"
+                                                    style="margin:auto;display:block;" alt="...">
+                                            </div>
+                                            <div class="carousel-item" title="獅子兔">
+                                                <img src="./img/allType/Lionhead.jpeg" class="d-block"
+                                                    style="margin:auto;display:block;" alt="...">
+                                            </div>
+                                            <div class="carousel-item" title="荷蘭垂耳兔">
+                                                <img src="./img/allType/holland_lop.jpg" class="d-block"
+                                                    style="margin:auto;display:block;" alt="...">
+                                            </div>
+                                            <div class="carousel-item" title="奶油兔">
+                                                <img src="./img/allType/Creme_DArgent.jpg" class="d-block"
+                                                    style="margin:auto;display:block;" alt="...">
+                                            </div>
+                                            <div class="carousel-item" title="安哥拉兔">
+                                                <img src="./img/allType/Angora.jpg" class="d-block"
+                                                    style="margin:auto;display:block;" alt="...">
+                                            </div>
+                                            <div class="carousel-item" title="日本野兔">
+                                                <img src="./img/allType/Japanese_Hare.jpg" class="d-block"
+                                                    style="margin:auto;display:block;" alt="...">
+                                            </div>
+                                            <div class="carousel-item" title="佛萊明巨兔">
+                                                <img src="./img/allType/Flemish_Giants.jpg" class="d-block"
+                                                    style="margin:auto;display:block;" alt="...">
+                                            </div>
+                                            <div class="carousel-item" title="金吉拉兔">
+                                                <img src="./img/allType/chinchilla.jpg" class="d-block"
+                                                    style="margin:auto;display:block;" alt="...">
+                                            </div>
+                                            <div class="carousel-item" title="大陸巨兔">
+                                                <img src="./img/allType/Continental_Giant.jpg" class="d-block"
+                                                    style="margin:auto;display:block;" alt="...">
+                                            </div>
+                                            <div class="carousel-item" title="美國垂耳兔">
+                                                <img src="./img/allType/American_Fuzzy_Lop.jpg" class="d-block"
+                                                    style="margin:auto;display:block;" alt="...">
+                                            </div>
+                                            <div class="carousel-item" title="比利時兔">
+                                                <img src="./img/allType/Belgian_Hare.jpg" class="d-block"
+                                                    style="margin:auto;display:block;" alt="...">
+                                            </div>
+                                            <div class="carousel-item" title="荷蘭侏儒兔">
+                                                <img src="./img/allType/holland_lop.jpg" class="d-block"
+                                                    style="margin:auto;display:block;" alt="...">
+                                            </div>
+                                            <div class="carousel-item" title="雷克斯兔">
+                                                <img src="./img/allType/Rex.jpg" class="d-block"
+                                                    style="margin:auto;display:block;" alt="...">
+                                            </div>
+                                            <div class="carousel-item" title="英國垂耳兔">
+                                                <img src="./img/allType/English_Lop.jpg" class="d-block"
+                                                    style="margin:auto;display:block;" alt="...">
+                                            </div>
+                                            <div class="carousel-item" title="暹羅兔">
+                                                <img src="./img/allType/Siamese.jpg" class="d-block"
+                                                    style="margin:auto;display:block;" alt="...">
+                                            </div>
+                                            <div class="carousel-item" title="小丑兔">
+                                                <img src="./img/allType/Harlequin.jpg" class="d-block"
+                                                    style="margin:auto;display:block;" alt="...">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="input-group mb-3" style="width: max-content; margin:0 auto ;" title="請依下方選像輸入正確名稱">
+                                    <span class="input-group-text" id="basic-addon1">品種名稱：</span>
+                                    <!-- <input id="msg" type="text" class="form-control" name="msg" placeholder="Additional Info"> -->
+                                    <input id="draw" class="form-control" list="options3" placeholder="道奇兔or海棠兔...">
+                                </div>
+                                <datalist id="options3">
+                                    <option data-value="0">道奇兔</option>
+                                    <option data-value="1">海棠兔</option>
+                                    <option data-value="2">獅子兔</option>
+                                    <option data-value="3">荷蘭垂耳兔</option>
+                                    <option data-value="4">斑點兔</option>
+                                    <option data-value="5">奶油兔</option>
+                                    <option data-value="6">安哥拉兔</option>
+                                    <option data-value="7">日本野兔</option>
+                                    <option data-value="8">佛萊明巨兔</option>
+                                    <option data-value="9">金吉拉兔</option>
+                                    <option data-value="10">大陸巨兔</option>
+                                    <option data-value="11">美國垂耳兔</option>
+                                    <option data-value="12">比利時兔</option>
+                                    <option data-value="13">荷蘭侏儒兔</option>
+                                    <option data-value="14">雷克斯兔</option>
+                                    <option data-value="15">英國垂耳兔</option>
+                                    <option data-value="16">暹羅兔</option>
+                                    <option data-value="17">小丑兔</option>
+                                </datalist>
+                                <button class="btn" id="bn">查看</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="team-item bg-light rounded">
+                            <div class="text-center border-bottom p-4">
+                                <img class="img-fluid rounded-circle mb-4" src="img/team-3.jpg" alt="">
+                                <h5>Tony Johnson</h5>
+                                <span>SEO Expert</span>
+                            </div>
+                            <div class="d-flex justify-content-center p-4">
+                                <a class="btn btn-square mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-square mx-1" href=""><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-square mx-1" href=""><i class="fab fa-instagram"></i></a>
+                                <a class="btn btn-square mx-1" href=""><i class="fab fa-youtubeedin-in"></i></a>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <!-- Team End -->
+
+        <!-- Newsletter Start -->
+        <span id="all_type"></span>
+        <div class="container-xxl bg-success newsletter py-5 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="container py-5 px-lg-5">
+                <div class="row justify-content-center">
+                    <div class="col-lg-7 text-center">
+                        <h3 class="section-title text-white justify-content-center"><span></span>品種總整理<span></span></h3>
+                        <img style="width: 100%;" src="./img/all_type.png" alt="兔子品種總整理">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Newsletter End -->
+
+
+
+
+
+        
+
+
+
+
+        <!-- Footer Start -->
+        <div class="container-fluid bg-success footer wow fadeIn" data-wow-delay="0.1s">
+        </div>
+        <!-- Footer End -->
+
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/isotope/isotope.pkgd.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

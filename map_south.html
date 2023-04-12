@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>兔子專科醫院-南部</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="mg/Logo.png" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&family=Jost:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        .nav-link .nav-tabs .active:active {
+
+            color: var(--bs-success);
+            background-color: #F6F4F9;
+            border-color: var(--bs-success) var(--bs-success) #F6F4F9;
+        }
+
+        #map {
+            height: 640px;
+            width: 960px;
+            margin: 0 auto;
+        }
+
+        a {
+            color: orange;
+        }
+
+        a:hover {
+            color: #198754;
+        }
+
+        @media (max-width: 1200px) {
+            .btn-map {
+                height: 120px;
+                margin-bottom: 5%;
+
+            }
+            #map {
+                width: 80%;
+            }
+
+        }
+    </style>
+
+</head>
+
+
+<body>
+    <div class="container-xxl bg-white p-0">
+        <!-- Spinner Start -->
+        <div id="spinner"
+            class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+
+        <!-- Navbar & Hero Start -->
+        <div class="container-xxl position-relative p-0">
+            <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+                <a href="" class="navbar-brand p-0">
+                    <h1 class="m-0">Map</h1>
+                    <!-- <img src="img/logo.png" alt="Logo"> -->
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="fa fa-bars"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav mx-auto py-0">
+                        <a href="index.html" class="nav-item nav-link">Rabbit Type</a>
+                        <div class="nav-item dropdown">
+                            <a href="habit.html" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Habits</a>
+                            <div class="dropdown-menu m-0">
+                                <a href="habit.html#live" class="dropdown-item" title="居住環境、飲食習慣、適合溫度、睡眠時間">日常生活</a>
+                                <a href="habit.html#stander" class="dropdown-item" title="兔子年齡、體型重量、外表骨骼">健康標準</a>
+                                <a href="habit.html#behavior" class="dropdown-item" title="肢體語言、聲音表達、智商行為">個性行為</a>
+                                <a href="habit.html#training" class="dropdown-item"
+                                    title="控制飲食、讓兔子喜歡你、賦予指令、訓練強度、持續堅持">馴服兔子</a>
+                                <a href="habit.html#dispute" class="dropdown-item" title="問題及闢謠">錯誤爭議</a>
+                            </div>
+                        </div>
+                        <a href="map.html" class="nav-item nav-link active">Map</a>
+                        <a href="works.html" class="nav-item nav-link">Works</a>
+                        <!-- <a href="project.html" class="nav-item nav-link">Project</a>
+                        <a href="contact.html" class="nav-item nav-link">Contact</a> -->
+                    </div>
+                    <img src="./img/logo-Test.jpg" class="btn rounded-pill ms-3 d-none d-lg-block"
+                        style="background-color: #198754;">
+                </div>
+            </nav>
+
+            <div class="container-xxl py-5 bg-success hero-header">
+                <div class="container my-5 py-5 px-lg-5">
+                    <div class="row g-5 py-5">
+                        <div class="col-12 text-center">
+                            <h1 class="text-white animated slideInDown">Map</h1>
+                            <hr class="bg-white mx-auto mt-0" style="width: 90px;">
+                            <h6 class="text-white animated slideInDown">提供地圖尋找兔子有關的地點</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Navbar & Hero End -->
+
+
+
+
+
+
+
+
+
+
+
+        <!-- map start -->
+
+        <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjD4Il1HDxENVtTpiz9mKGS2nAEoeDic0&callback=initMap&v=weekly"
+            defer></script>
+        <script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script>
+
+        <script>
+            function Location(SocialGroup,Phone, lat, lng) {
+                this.SocialGroup = SocialGroup
+                this.lat = lat
+                this.lng = lng
+                this.Phone = Phone
+
+
+                this.title = SocialGroup
+                this.center = { lat: parseFloat(lat), lng: parseFloat(lng) }
+            }
+
+            window.onload = function () {
+                fetch("./rabbit_all.js")
+                    .then(function (response) {
+                        return response.json()
+                    })
+                    .then(function (jsonObj) {
+                        let allMap = []
+                        jsonObj["allMap_south"].forEach(function (as) {
+                            allMap.push(new Location(as.SocialGroup,as.Phone, as.latitude, as.longitude))
+                        })
+                        pinMarkers(allMap)
+                    })
+            }
+
+            function pinMarkers(allMap) {
+                allMap.forEach(function (as) {
+                    new google.maps.Marker({
+                        position: as.center,
+                        map: map,
+                        label: {
+                            text: as.SocialGroup,
+                            fontWeight: "bold",
+                            fontSize:"16px",
+                            color: "#3F3F3F"
+                        },
+                        title:as.Phone
+                    })
+                })
+            }
+
+            let map;
+
+            function initMap() {
+                let center = { lat: 23.01965, lng: 120.247352 }
+                map = new google.maps.Map(document.getElementById("map"), {
+                    center: center,
+                    zoom: 9,
+                });
+            }
+
+            window.initMap = initMap;   
+        </script>
+
+
+
+
+
+
+        <!-- map end -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- Nav tabs -->
+        <div class="container" id="map_south">
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link" href="map.html">相關協會/團體</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="map_north.html#map_north">兔子專科醫院/北部</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="map_middle.html#map_middle">兔子專科醫院/中部</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab">兔子專科醫院/南部</a>
+                </li>
+
+            </ul>
+
+
+
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <!--               <div id="home" class="container tab-pane fade "><br>
+                    <div class="row align-items-center px-lg-5">
+                        <div class="col-lg-6 text-lg-start d-grid gap-2 mx-auto btn-map scrollbar-map card"
+                            data-bs-spy="scroll">
+                            <div class="card-title align-items-center" style="margin: 5% 0% -10%;">
+                                <h4 style="color: orange;">團體/協會</h4>
+                                <hr>
+                            </div>
+                            <button class="btn btn-outline-warning rbt-style">Protect</button>
+                            <button class="btn btn-outline-warning rbt-style">LoveRabbitTaipei</button>
+                            <button class="btn btn-outline-warning rbt-style">LoveRabbitKaohsiung</button>
+                        </div>
+                        <div class="col-lg-6 text-lg-start" style="border-radius: 10px; border: 2px solid orange;"
+                            id="map">
+                        </div>
+                        <br>
+                    </div>
+                </div> -->
+                <div class="container tab-pane active"><br>
+                    <div class="col-lg-6 text-lg-start" style="border-radius: 10px; border: 2px solid orange;" id="map">
+                    </div>
+                    <!-- <div id="menu2" class="container tab-pane fade"><br>
+                    <h3>Menu 2</h3>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+                        totam rem aperiam.</p>
+                </div> -->
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <!-- Footer Start -->
+            <div class="container-fluid bg-success footer wow fadeIn" data-wow-delay="0.1s">
+            </div>
+            <!-- Footer End -->
+
+
+
+            <!-- Back to Top -->
+            <a href="#" class="btn btn-lg btn-outline-secondary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+        </div>
+
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="lib/wow/wow.min.js"></script>
+        <script src="lib/easing/easing.min.js"></script>
+        <script src="lib/waypoints/waypoints.min.js"></script>
+        <script src="lib/counterup/counterup.min.js"></script>
+        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+        <script src="lib/isotope/isotope.pkgd.min.js"></script>
+        <script src="lib/lightbox/js/lightbox.min.js"></script>
+
+        <!-- Template Javascript -->
+        <script src="js/main.js"></script>
+</body>
+
+</html>
